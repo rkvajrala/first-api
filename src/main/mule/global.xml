@@ -15,23 +15,34 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 
   <http:listener-config name="firstApiHttpListenerConfig">
     <http:listener-connection
-      host="0.0.0.0"
-      port="8081" />
+      host="${http.host}"
+      port="${http.port}" />
   </http:listener-config>
 
   <apikit:config
     name="firstApiConfig"
-    api="resource::85c0b1e4-2d12-476c-aadd-6685bae4edde:first-api:1.0.1:raml:zip:first-api.raml"
+    api="${api.spec}"
     outboundHeadersMapName="outboundHeaders"
     httpStatusVarName="httpStatus" />
 
 
   <api-gateway:autodiscovery
-    apiId="16856700"
+    apiId="${api.id}"
     ignoreBasePath="true"
     doc:name="apiAutodiscovery"
     doc:id="c3025eca-9932-41e4-8678-1d37144d0b3e"
     flowRef="first-api-main" />
+
+  <global-property
+    doc:name="Global Property"
+    doc:id="19ceb6f3-687b-4075-8208-11faf3da759d"
+    name="env"
+    value="local" />
+
+  <configuration-properties
+    doc:name="Configuration properties"
+    doc:id="d13ebd98-1bcb-467c-af9d-efa80232353d"
+    file="${env}.yaml" />
 
 
 

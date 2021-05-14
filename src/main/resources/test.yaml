@@ -1,0 +1,13 @@
+http:
+  host: "0.0.0.0"
+  port: "8081"
+
+
+#resource::85c0b1e4-2d12-476c-aadd-6685bae4edde:first-api:1.0.1:raml:zip:first-api.raml  
+api:
+  groupId: "85c0b1e4-2d12-476c-aadd-6685bae4edde"
+  artifactId: "first-api"
+  version: "1.0.1"
+  spec: "resource::${api.groupId}:${api.artifactId}:${api.version}:raml:zip:first-api.raml"
+  majorVerison: "v1"
+  id: "16869188"
