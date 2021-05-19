@@ -51,19 +51,14 @@ http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/m
 
 
   </flow>
-
-
-
   <flow name="get:\person\(id):firstApiConfig">
+    <json-logger:logger doc:name="Logger" doc:id="00b572c5-5dc7-431e-b897-fb51670d8211" config-ref="JSON_Logger_Config" message="Test" />
     <ee:transform>
       <ee:variables>
         <ee:set-variable variableName="id">attributes.uriParams.'id'</ee:set-variable>
       </ee:variables>
     </ee:transform>
-    <flow-ref
-      doc:name="person-by-id"
-      doc:id="61074034-6cba-4687-9242-0b0d5e048c36"
-      name="person-by-id" />
+    <flow-ref doc:name="person-by-id" doc:id="61074034-6cba-4687-9242-0b0d5e048c36" name="person-by-id" />
   </flow>
   
 </mule>

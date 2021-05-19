@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <mule
+  xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger"
   xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
   xmlns:http="http://www.mulesoft.org/schema/mule/http"
   xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
   xmlns="http://www.mulesoft.org/schema/mule/core"
   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="
+xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
-http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"
->
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd">
 
   <http:listener-config name="firstApiHttpListenerConfig">
     <http:listener-connection
@@ -21,7 +22,7 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 
   <apikit:config
     name="firstApiConfig"
-    api="${api.spec}"
+    api="resource::85c0b1e4-2d12-476c-aadd-6685bae4edde:first-api:1.0.1:raml:zip:first-api.raml"
     outboundHeadersMapName="outboundHeaders"
     httpStatusVarName="httpStatus" />
 
@@ -37,12 +38,22 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
     doc:name="Global Property"
     doc:id="19ceb6f3-687b-4075-8208-11faf3da759d"
     name="env"
-    value="local" />
+    value="dev" />
 
   <configuration-properties
     doc:name="Configuration properties"
     doc:id="d13ebd98-1bcb-467c-af9d-efa80232353d"
     file="${env}.yaml" />
+
+  <json-logger:config
+    name="JSON_Logger_Config"
+    doc:name="JSON Logger Config"
+    doc:id="d7921520-af1c-4ada-aab3-49bb203dd39e"
+    environment="${env}"
+    prettyPrint="${logger.prettyPrint}"
+    disabledFields="${logger.disabledFields}"
+    applicationName="${api.artifactId}"
+    applicationVersion="${api.version}" />
 
 
 

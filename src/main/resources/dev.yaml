@@ -8,6 +8,10 @@ api:
   groupId: "85c0b1e4-2d12-476c-aadd-6685bae4edde"
   artifactId: "first-api"
   version: "1.0.1"
-  spec: "resource::${api.groupId}:${api.artifactId}:${api.version}:raml:zip:first-api.raml"
+  #spec: "resource::${api.groupId}:${api.artifactId}:${api.version}:raml:zip:first-api.raml"
   majorVerison: "v1"
   id: "16869181"
+  
+logger:
+  prettyPrint: "true"
+  disabledFields: ""

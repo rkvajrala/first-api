@@ -11,3 +11,7 @@ api:
   spec: "resource::${api.groupId}:${api.artifactId}:${api.version}:raml:zip:first-api.raml"
   majorVerison: "v1"
   id: "16869200"
+  
+logger:
+  prettyPrint: "false"
+  disabledFields: "content"

@@ -26,8 +26,15 @@
     <deployment.suffix>-${deployment.env}</deployment.suffix>
     <deployment.name>${deployment.prefix}${project.artifactId}${deployment.suffix}</deployment.name>
     <ap.environment>${deployment.env}</ap.environment>
+    <!-- Supported visualizer api layers -->
+    <api.layer.eapi>Experience</api.layer.eapi>
+    <api.layer.papi>Process</api.layer.papi>
+    <api.layer.sapi>System</api.layer.sapi>
+    <api.layer.sapi>System</api.layer.sapi>
+    <api.layer.backend>Backend</api.layer.backend>
+    <api.layer.none>None</api.layer.none>
     
-
+    
   </properties>
 
   <build>
@@ -68,23 +75,28 @@
           <configuration>
             <classifier>mule-application</classifier>
             <cloudHubDeployment>
-            <server>cloudhub</server>
-            <environment>${deployment.env}</environment>
-            <uri>https://anypoint.mulesoft.com</uri>
-        <region>us-east-2</region>
-        <objectStoreV2>true</objectStoreV2>
-      <muleVersion>${app.runtime}</muleVersion>
-      <workers>1</workers>
-      <workerType>MICRO</workerType>
-      <applicationName>${deployment.name}</applicationName>
-      <deploymentTimeout>600000</deploymentTimeout>
-      <properties>
-        <anypoint.platform.client_id>${ap.client_id}</anypoint.platform.client_id>
-        <anypoint.platform.client_secret>${ap.client_secret}</anypoint.platform.client_secret>
-        <env>${ap.environment}</env>
-        
-      </properties>
-    </cloudHubDeployment>
+              <server>cloudhub</server>
+              <environment>${deployment.env}</environment>
+              <uri>https://anypoint.mulesoft.com</uri>
+              <region>us-east-2</region>
+              <objectStoreV2>true</objectStoreV2>
+              <muleVersion>${app.runtime}</muleVersion>
+              <workers>1</workers>
+              <workerType>MICRO</workerType>
+              <applicationName>${deployment.name}</applicationName>
+              <deploymentTimeout>600000</deploymentTimeout>
+              <properties>
+                <anypoint.platform.client_id>${ap.client_id}</anypoint.platform.client_id>
+                <anypoint.platform.client_secret>${ap.client_secret}</anypoint.platform.client_secret>
+                <env>${ap.environment}</env>
+        <!-- Visualizer Properties -->
+                <anypoint.platform.config.agent.enabled>true</anypoint.platform.config.agent.enabled>
+                <anypoint.platform.visualizer.displayName>${project.artifactId}</anypoint.platform.visualizer.displayName>
+                <anypoint.platform.visualizer.layer>${api.layer}</anypoint.platform.visualizer.layer>
+
+
+              </properties>
+            </cloudHubDeployment>
           </configuration>
         </plugin>
 
