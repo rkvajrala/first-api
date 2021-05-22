@@ -106,5 +106,17 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>mule-snap-shots</name>
+      <url>http://localhost:8091/repository/mule-snap-shots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexus</id>
+      <name>mule-releases</name>
+      <url>http://localhost:8091/repository/mule-releases/</url>
+    </repository>
+  </distributionManagement>
 
 </project>
